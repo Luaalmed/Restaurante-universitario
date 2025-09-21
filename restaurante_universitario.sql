@@ -14,7 +14,7 @@ CREATE TYPE forma_pagamento_enum AS ENUM ('cartao', 'dinheiro', 'pix');
 -- Tabela de Usuários (Clientes e Administradores)
 CREATE TABLE usuarios (
     id SERIAL PRIMARY KEY,
-    ra VARCHAR(20) NOT NULL,
+     ra VARCHAR(20) UNIQUE,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
