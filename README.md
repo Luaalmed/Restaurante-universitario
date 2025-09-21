@@ -1,4 +1,4 @@
-# 🥗 Restaurante Universitário - Campus Eats
+# 🥗 Restaurante Universitário - (Nome)
 
 ## 🚀 Sobre o Projeto
 
