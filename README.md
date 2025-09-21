@@ -2,7 +2,7 @@
 
 ## 🚀 Sobre o Projeto
 
-Este projeto é um sistema de **Restaurante Universitário** desenvolvido com base em conceitos de **Engenharia de Software** e metodologias ágeis. O objetivo é modernizar e otimizar a experiência de alimentação na universidade, oferecendo um aplicativo completo para alunos e um painel de gerenciamento robusto para administradores.
+Este projeto é um sistema de **Restaurante Universitário** desenvolvido com base em conceitos de **Engenharia de Software** e metodologias ágeis. O objetivo é modernizar e otimizar a experiência de alimentação na universidade, oferecendo um site completo para alunos e um painel de gerenciamento robusto para administradores.
 
 ---
 
