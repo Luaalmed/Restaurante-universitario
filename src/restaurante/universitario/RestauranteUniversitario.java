@@ -17,6 +17,7 @@ import Model.TelaCadastroModel;
 import view.TelaCadastro;
 import View.CadastroAluno;
 import View.CadastroAdm;
+import View.LoginAlunoView;
 
 import DAO.AlunoDAO;
 import DAO.AdmDAO;
@@ -45,6 +46,8 @@ public class RestauranteUniversitario {
             // Observação: se sua TelaCadastro não recebe controller no construtor,
             // troque para: TelaCadastro telaHome = new TelaCadastro();
             TelaCadastro telaHome = new TelaCadastro(nav);
+            new LoginAlunoView().setVisible(true);
+
 
             // As views de cadastro foram criadas com "controller" no construtor.
             // Para evitar ciclo, passamos null e ligamos os botões manualmente abaixo.
