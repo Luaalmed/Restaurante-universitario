@@ -32,6 +32,8 @@ public class CadastrarCardapio extends javax.swing.JFrame {
     private void initComponents() {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         Jfundo = new javax.swing.JPanel();
         lblnome = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
@@ -59,11 +61,26 @@ public class CadastrarCardapio extends javax.swing.JFrame {
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(74, 58, 42));
 
-        Jfundo.setBackground(new java.awt.Color(204, 204, 255));
+        jPanel2.setBackground(new java.awt.Color(74, 52, 48));
 
-        lblnome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Jfundo.setBackground(new java.awt.Color(0, 0, 0));
+
+        lblnome.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblnome.setForeground(new java.awt.Color(255, 193, 7));
         lblnome.setText("NOME:");
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
@@ -73,6 +90,7 @@ public class CadastrarCardapio extends javax.swing.JFrame {
         });
 
         lblDescricao.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblDescricao.setForeground(new java.awt.Color(255, 193, 7));
         lblDescricao.setText("DESCRIÇÃO: ");
 
         txtDescricao.setColumns(20);
@@ -80,9 +98,11 @@ public class CadastrarCardapio extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtDescricao);
 
         lblPreco.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPreco.setForeground(new java.awt.Color(255, 193, 7));
         lblPreco.setText("PREÇO: ");
 
         lblCategoria.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblCategoria.setForeground(new java.awt.Color(255, 193, 7));
         lblCategoria.setText("CATEGORIA: ");
 
         cbcategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PRATO", "LANCHE", "BEBIDAS", " " }));
@@ -93,74 +113,86 @@ public class CadastrarCardapio extends javax.swing.JFrame {
         });
 
         lblDisponibilidade.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblDisponibilidade.setForeground(new java.awt.Color(255, 193, 7));
         lblDisponibilidade.setText("DISPONIBILIDADE:");
 
-        btnSalvar.setBackground(new java.awt.Color(102, 102, 255));
-        btnSalvar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSalvar.setBackground(new java.awt.Color(0, 0, 0));
+        btnSalvar.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnSalvar.setForeground(new java.awt.Color(255, 255, 255));
         btnSalvar.setText("SALVAR");
+        btnSalvar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 193, 0)));
 
-        btnCancelar.setBackground(new java.awt.Color(102, 102, 255));
-        btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCancelar.setBackground(new java.awt.Color(0, 0, 0));
+        btnCancelar.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelar.setText("CANCELAR");
+        btnCancelar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 193, 0)));
 
-        lblCardapio.setFont(new java.awt.Font("Segoe UI", 3, 24)); // NOI18N
-        lblCardapio.setText("CADASTRAR CARDÁPIO");
+        lblCardapio.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        lblCardapio.setForeground(new java.awt.Color(255, 255, 255));
+        lblCardapio.setText("Cadastrar Cardápio");
 
         javax.swing.GroupLayout JfundoLayout = new javax.swing.GroupLayout(Jfundo);
         Jfundo.setLayout(JfundoLayout);
         JfundoLayout.setHorizontalGroup(
             JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JfundoLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JfundoLayout.createSequentialGroup()
-                        .addComponent(lblPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(JfundoLayout.createSequentialGroup()
-                        .addGroup(JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDescricao)
-                            .addComponent(lblnome, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                .addGroup(JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtNome)
-                            .addComponent(jScrollPane1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JfundoLayout.createSequentialGroup()
-                                .addComponent(lblCardapio)
-                                .addGap(25, 25, 25))))
+                            .addGroup(JfundoLayout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addGroup(JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(JfundoLayout.createSequentialGroup()
+                                        .addComponent(lblnome, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(JfundoLayout.createSequentialGroup()
+                                        .addGroup(JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(lblPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(JfundoLayout.createSequentialGroup()
+                                                .addComponent(lblCategoria)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(cbcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(JfundoLayout.createSequentialGroup()
+                                                .addComponent(lblDisponibilidade)
+                                                .addGap(34, 34, 34)
+                                                .addComponent(chkDisponivel)))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(JfundoLayout.createSequentialGroup()
+                                .addGap(34, 34, 34)
+                                .addComponent(lblDescricao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(JfundoLayout.createSequentialGroup()
+                            .addGap(158, 158, 158)
+                            .addComponent(lblCardapio)))
                     .addGroup(JfundoLayout.createSequentialGroup()
-                        .addComponent(lblCategoria)
-                        .addGap(18, 18, 18)
-                        .addComponent(cbcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(JfundoLayout.createSequentialGroup()
-                        .addComponent(lblDisponibilidade)
-                        .addGap(34, 34, 34)
-                        .addComponent(chkDisponivel)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(JfundoLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(83, 83, 83))
+                        .addGap(68, 68, 68)
+                        .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         JfundoLayout.setVerticalGroup(
             JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JfundoLayout.createSequentialGroup()
-                .addGap(57, 57, 57)
+                .addGap(64, 64, 64)
                 .addComponent(lblCardapio)
-                .addGap(44, 44, 44)
+                .addGap(37, 37, 37)
                 .addGroup(JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblnome)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JfundoLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(JfundoLayout.createSequentialGroup()
                         .addGap(42, 42, 42)
-                        .addComponent(lblDescricao)))
-                .addGap(39, 39, 39)
+                        .addComponent(lblDescricao))
+                    .addGroup(JfundoLayout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(40, 40, 40)
                 .addGroup(JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblPreco)
                     .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -176,18 +208,34 @@ public class CadastrarCardapio extends javax.swing.JFrame {
                 .addGroup(JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(Jfundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(73, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Jfundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Jfundo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Jfundo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 390, Short.MAX_VALUE))
         );
 
         pack();
@@ -264,6 +312,8 @@ public class CadastrarCardapio extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbcategoria;
     private javax.swing.JCheckBox chkDisponivel;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblCardapio;
     private javax.swing.JLabel lblCategoria;
