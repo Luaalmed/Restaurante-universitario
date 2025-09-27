@@ -7,6 +7,8 @@ package controller;
 import DAO.AdmDAO;
 import Model.CadastroAdmModel;
 import View.CadastroAdm;
+
+import javax.swing.JFrame; 
 import javax.swing.*;
 
 public class CadastroAdmController {
