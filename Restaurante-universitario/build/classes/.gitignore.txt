@@ -1,0 +1,14 @@
+# Arquivos e pastas do NetBeans
+/nbproject/private/
+/nbproject/project.properties
+/build/
+/dist/
+/manifest.mf
+/nb-configuration.xml
+
+# Arquivos Java compilados
+*.class
+
+# Arquivos Jar e War
+*.jar
+*.war
