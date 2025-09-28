@@ -203,7 +203,6 @@ public class TelaInicial extends javax.swing.JFrame {
         telaAdmin.setVisible(true);
         this.dispose(); // Fecha a tela atual
     // Fecha a janela atual (a TelaInicialView)
-    this.dispose();
     }//GEN-LAST:event_btnAdminActionPerformed
 
     /**

@@ -8,10 +8,10 @@ public class AdmDAO {
     private static final String SCHEMA = "restaurante_universitario";
     private static final String ENUM   = "restaurante_universitario.tipo_usuario_enum";
 
-    // usando a coluna 'ra' para guardar o ID do ADM (se preferir, crie 'adm_id')
+    // SQL modificado para não usar criptografia
     private static final String INSERT_SQL =
         "INSERT INTO " + SCHEMA + ".usuarios (nome, email, ra, senha, tipo_usuario) " +
-        "VALUES (?, ?, ?, public.crypt(?, public.gen_salt('bf')), 'admin'::" + ENUM + ")";
+        "VALUES (?, ?, ?, ?, 'admin'::" + ENUM + ")";
 
     private static final String EXISTS_SQL =
         "SELECT 1 FROM " + SCHEMA + ".usuarios WHERE email = ? OR ra = ? LIMIT 1";
