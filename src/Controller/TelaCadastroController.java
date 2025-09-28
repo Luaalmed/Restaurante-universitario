@@ -6,8 +6,8 @@ package controller;
 
 import Model.TelaCadastroModel;
 import Model.TelaCadastroModel.Tela;
-import View.CadastroAluno;
-import View.CadastroAdm;
+import View.TelaCadastroAluno;
+import View.TelaCadastroAdmin;
 import view.TelaCadastro;
 
 import javax.swing.*;

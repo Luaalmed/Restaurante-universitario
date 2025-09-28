@@ -8,9 +8,9 @@ public class AlunoDAO {
     private static final String SCHEMA = "restaurante_universitario";
     private static final String ENUM   = "restaurante_universitario.tipo_usuario_enum";
 
-    private static final String INSERT_SQL =
-        "INSERT INTO " + SCHEMA + ".usuarios (nome, email, ra, senha, tipo_usuario) " +
-        "VALUES (?, ?, ?, public.crypt(?, public.gen_salt('bf')), 'cliente'::" + ENUM + ")";
+   private static final String INSERT_SQL =
+    "INSERT INTO " + SCHEMA + ".usuarios (nome, email, ra, senha, tipo_usuario) " +
+    "VALUES (?, ?, ?, ?, 'cliente'::" + ENUM + ")";
 
     private static final String EXISTS_SQL =
         "SELECT 1 FROM " + SCHEMA + ".usuarios WHERE email = ? OR ra = ? LIMIT 1";

@@ -4,19 +4,11 @@
 /build/
 /dist/
 /manifest.mf
+/nb-configuration.xml
+
+# Arquivos Java compilados
+*.class
+
+# Arquivos Jar e War
 *.jar
 *.war
-*.class
-/nb-configuration.xml
-/nb-project/
-
-# Ignorar arquivos do Mac OS
-.DS_Store
-
-# Ignorar arquivos do Windows
-Thumbs.db
-
-# Ignorar logs e temporários
-*.log
-*.tmp
-/temp/
