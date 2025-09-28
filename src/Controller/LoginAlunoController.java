@@ -1,29 +1,51 @@
 package Controller;
 
-
-import javax.swing.JOptionPane;
-import View.LoginAlunoView;
-import View.PainelAlunoView;
+import DAO.AlunoDAO;                    
+import View.PainelAluno;               // <-- IMPORTA A VIEW DO PAINEL
+import View.TelaLoginAluno;            // <-- IMPORTA A VIEW DO LOGIN
+import java.sql.SQLException;          // <-- EXCEÇÕES DO JDBC
+import javax.swing.JOptionPane;        // <-- DIALOGS
+import javax.swing.SwingUtilities;     // <-- ABRIR A OUTRA TELA
 
 public class LoginAlunoController {
-    private LoginAlunoView view;
 
-    public LoginAlunoController(LoginAlunoView view) {
+    private final TelaLoginAluno view;
+    private final AlunoDAO alunoDAO = new AlunoDAO();   // <-- FIELD DO DAO
+
+    public LoginAlunoController(TelaLoginAluno view) {
         this.view = view;
-        this.view.getBtnEntrar().addActionListener(e -> realizarLogin());
+        // conecta o botão Login ao handler
+        this.view.setLoginAction(e -> onLogin());
     }
 
-    public void realizarLogin() {
-        String ra = view.getRa();
-        String senha = view.getSenha();
+    private void onLogin() {
+        String ra    = view.getRa();       // <- pega da view
+        String senha = view.getSenha();    // <- pega da view (tudo minúsculo)
 
-        // Lógica de login SUPER SIMPLES (dados fixos)
-        if ("112233".equals(ra) && "456".equals(senha)) {
-            JOptionPane.showMessageDialog(view, "Login de Aluno realizado com sucesso!");
-            view.dispose(); // Fecha a tela de login
-            new PainelAlunoView().setVisible(true); // Abre o painel do Aluno
-        } else {
-            JOptionPane.showMessageDialog(view, "RA ou Senha incorretos!", "Erro", JOptionPane.ERROR_MESSAGE);
+        if (ra.isBlank() || senha.isBlank()) {
+            JOptionPane.showMessageDialog(view,
+                    "Preencha RA e Senha.",
+                    "Login", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        try {
+            boolean ok = alunoDAO.autenticarAluno(ra, senha);  // <- senha minúsculo
+            if (ok) {
+                SwingUtilities.invokeLater(() -> {
+                    new PainelAluno().setVisible(true);
+                    view.dispose();
+                });
+            } else {
+                JOptionPane.showMessageDialog(view,
+                        "Aluno não encontrado.",
+                        "Login", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(view,
+                    "Erro ao acessar o banco: " + ex.getMessage(),
+                    "Erro", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
         }
     }
 }

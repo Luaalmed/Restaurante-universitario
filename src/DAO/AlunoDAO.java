@@ -34,4 +34,23 @@ public class AlunoDAO {
             try (ResultSet rs = ps.executeQuery()) { return rs.next(); }
         }
     }
+    
+    public boolean autenticarAluno(String ra, String senha) throws SQLException {
+    final String SQL = 
+        "SELECT 1 " +
+        "FROM restaurante_universitario.usuarios " +
+        "WHERE ra = ? AND senha = ? " +
+        "  AND tipo_usuario = 'cliente'::restaurante_universitario.tipo_usuario_enum " +
+        "LIMIT 1";
+
+    try (Connection con = DAO.getConnection();
+         PreparedStatement ps = con.prepareStatement(SQL)) {
+        ps.setString(1, ra);
+        ps.setString(2, senha);
+        try (ResultSet rs = ps.executeQuery()) {
+            return rs.next();
+        }
+    }
+}
+
 }
