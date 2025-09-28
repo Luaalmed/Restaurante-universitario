@@ -63,6 +63,7 @@ public class CadastroAlunoController {
             JOptionPane.showMessageDialog(view,
                 "Erro ao salvar: " + e.getMessage(),
                 "Erro", JOptionPane.ERROR_MESSAGE);
+            
         }
     }
 }

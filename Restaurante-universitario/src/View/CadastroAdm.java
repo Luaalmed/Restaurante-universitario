@@ -31,6 +31,7 @@ public class CadastroAdm extends JPanel {
         add(new JLabel()); // espaço
     }
 
+    
     public String getNome()   { return txtNome.getText(); }
     public String getEmail()  { return txtEmail.getText(); }
     public String getSenha()  { return new String(txtSenha.getPassword()); }

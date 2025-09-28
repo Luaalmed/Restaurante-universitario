@@ -20,6 +20,7 @@ public class LoginAdminController {
         this.view.getBtnEntrar().addActionListener(e -> realizarLogin());
     }
 
+    
     private void realizarLogin() {
         String email = view.getEmail().trim(); // ou view.getRa().trim() se usar RA
         String senha = view.getSenha();

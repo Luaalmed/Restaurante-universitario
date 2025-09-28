@@ -7,6 +7,7 @@ import View.CadastroAdm;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class CadastroAdmController {
     private final CadastroAdm view;
     private final AdmDAO dao;

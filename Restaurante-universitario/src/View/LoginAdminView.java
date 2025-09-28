@@ -9,6 +9,7 @@ public class LoginAdminView extends JFrame {
     private JPasswordField txtSenha;
     private JButton btnEntrar;
 
+    
     public LoginAdminView() {
         setTitle("Login - Admin");
         setSize(350, 200);

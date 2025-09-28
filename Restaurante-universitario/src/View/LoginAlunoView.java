@@ -17,6 +17,7 @@ public class LoginAlunoView extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new GridLayout(3, 2, 10, 10));
 
+        
         add(new JLabel("RA:"));
         txtRa = new JTextField();
         add(txtRa);

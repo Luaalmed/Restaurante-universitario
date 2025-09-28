@@ -75,6 +75,7 @@ public boolean autenticarAdminPorEmailSenha(String email, String senha) throws S
             }
         }
     }
+    
 
     public boolean autenticarPorEmailSenha(String email, String senha) throws SQLException {
         try (Connection con = DAO.getConnection();
