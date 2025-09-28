@@ -21,13 +21,13 @@ public LoginAlunoController(View.LoginAlunoView view, DAO.AlunoDAO dao) {
 }
 
 
-  
 
 
     public void realizarLogin() {
         String ra    = view.getRa().trim();
         String senha = view.getSenha(); // mantenha exatamente como digitada
 
+        
         try {
             boolean ok = dao.autenticarPorRaSenha(ra, senha);
             if (ok) {

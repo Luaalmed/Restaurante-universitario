@@ -9,6 +9,7 @@ public class CadastroAluno extends JPanel {
     private JButton btnCadastrar;
 
     
+    
     public CadastroAluno() { initComponents(); }
 
     private void initComponents() {

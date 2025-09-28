@@ -21,6 +21,7 @@ public class LoginAdminController {
     }
 
     
+    
     private void realizarLogin() {
         String email = view.getEmail().trim(); // ou view.getRa().trim() se usar RA
         String senha = view.getSenha();
