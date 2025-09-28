@@ -29,6 +29,7 @@ public class LoginAlunoView extends JFrame {
         add(new JLabel()); // Espaço em branco
         btnEntrar = new JButton("Entrar"); 
         
+        
         add(btnEntrar);
 
         // Conecta esta View com o Controller (usa construtor que cria o DAO)

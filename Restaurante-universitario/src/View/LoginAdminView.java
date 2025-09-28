@@ -11,6 +11,7 @@ public class LoginAdminView extends JFrame {
 
     
     
+    
     public LoginAdminView() {
         setTitle("Login - Admin");
         setSize(350, 200);

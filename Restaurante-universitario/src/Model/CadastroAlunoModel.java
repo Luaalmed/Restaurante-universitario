@@ -15,6 +15,7 @@ public class CadastroAlunoModel {
 
     
     
+    
     public String getNome() { return nome; }
     public String getRa()   { return ra; }
     public String getEmail(){ return email; }

@@ -10,6 +10,7 @@ public class CadastroAluno extends JPanel {
 
     
     
+    
     public CadastroAluno() { initComponents(); }
 
     private void initComponents() {

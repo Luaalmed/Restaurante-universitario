@@ -11,6 +11,7 @@ public class LoginAlunoController {
     private final AlunoDAO dao; 
     
     
+    
 public LoginAlunoController(View.LoginAlunoView view) {
     this(view, new DAO.AlunoDAO());
 }
