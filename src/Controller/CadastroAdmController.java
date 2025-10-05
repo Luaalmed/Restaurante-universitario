@@ -1,29 +1,43 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Controller;
 
 import DAO.AdmDAO;
 import Model.CadastroAdmModel;
 import View.TelaCadastroAdmin;
+import View.TelaInicialCadastro;
+import View.TelaInicial;
 import javax.swing.JOptionPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class CadastroAdmController {
+
     private final TelaCadastroAdmin view;
     private final AdmDAO dao;
 
-    // Construtor simplificado
     public CadastroAdmController(TelaCadastroAdmin view, AdmDAO dao) {
         this.view = view;
         this.dao  = dao;
+        registrarEventos();
     }
 
-    public void cadastrarAdm() {
-        // Pega os dados da View através dos getters
+    private void registrarEventos() {
+        view.getBtnCadastrar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cadastrarAdm();
+            }
+        });
+        view.getBtnVoltar().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                voltarParaInicial();
+            }
+        });
+    }
+
+    private void cadastrarAdm() {
         CadastroAdmModel m = new CadastroAdmModel(
             view.getNome(),
-            view.getId(),
             view.getEmail(),
             view.getSenha()
         );
@@ -36,18 +50,28 @@ public class CadastroAdmController {
         }
 
         try {
-            if (dao.emailOuIdJaExiste(m.getEmail(), m.getId())) {
-                JOptionPane.showMessageDialog(view, "Email ou ID já cadastrado.",
+            if (dao.emailJaExiste(m.getEmail())) {
+                JOptionPane.showMessageDialog(view,
+                    "Email já cadastrado.",
                     "Conflito", JOptionPane.ERROR_MESSAGE);
                 return;
             }
             dao.inserir(m);
-            JOptionPane.showMessageDialog(view, "ADM cadastrado com sucesso!");
-            view.limpar();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(view, "Erro ao salvar: " + e.getMessage(),
+            JOptionPane.showMessageDialog(view,
+                "ADM cadastrado com sucesso!",
+                "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+            view.dispose();
+            new TelaInicial().setVisible(true);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(view,
+                "Erro ao salvar: " + ex.getMessage(),
                 "Erro", JOptionPane.ERROR_MESSAGE);
-            e.printStackTrace();
+            ex.printStackTrace();
         }
+    }
+
+    private void voltarParaInicial() {
+        view.dispose();
+        new TelaInicialCadastro().setVisible(true);
     }
 }

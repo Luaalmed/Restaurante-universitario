@@ -16,11 +16,15 @@ public class TelaCadastroAdmin extends javax.swing.JFrame {
     /**
      * Creates new form TelaCadastroAdmin
      */
-    public TelaCadastroAdmin() {
+  
+    public TelaCadastroAdmin(AdmDAO admDAO) {
         initComponents();
-        this.admDAO = new AdmDAO();
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        this.admDAO = admDAO;
         this.controller = new CadastroAdmController(this, this.admDAO);
-    }
+}
+
      // Getters para o Controller ler os dados da tela
     // IMPORTANTE: Ajuste os nomes (ex: jTextField5) para os nomes corretos das suas variáveis
     public String getNome() { return Nome.getText(); }
@@ -50,10 +54,11 @@ public class TelaCadastroAdmin extends javax.swing.JFrame {
         lblnome2 = new javax.swing.JLabel();
         lblnome3 = new javax.swing.JLabel();
         lblnome4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnCadastrar = new javax.swing.JButton();
         Senha = new javax.swing.JPasswordField();
         Email = new javax.swing.JTextField();
         Nome = new javax.swing.JTextField();
+        btnVoltar = new javax.swing.JButton();
 
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,13 +86,13 @@ public class TelaCadastroAdmin extends javax.swing.JFrame {
         lblnome4.setForeground(new java.awt.Color(255, 193, 7));
         lblnome4.setText("Senha:");
 
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 193, 7));
-        jButton1.setText("Cadastrar ADM");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastrar.setBackground(new java.awt.Color(0, 0, 0));
+        btnCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCadastrar.setForeground(new java.awt.Color(255, 193, 7));
+        btnCadastrar.setText("Cadastrar ADM");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCadastrarActionPerformed(evt);
             }
         });
 
@@ -102,6 +107,16 @@ public class TelaCadastroAdmin extends javax.swing.JFrame {
         Nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NomeActionPerformed(evt);
+            }
+        });
+
+        btnVoltar.setBackground(new java.awt.Color(0, 0, 0));
+        btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(255, 193, 7));
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
             }
         });
 
@@ -122,7 +137,8 @@ public class TelaCadastroAdmin extends javax.swing.JFrame {
                             .addComponent(Email, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                             .addComponent(Nome, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
                             .addComponent(Senha)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(100, 100, 100)
                         .addComponent(jLabel4)))
@@ -131,7 +147,7 @@ public class TelaCadastroAdmin extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(81, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(65, 65, 65)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +164,9 @@ public class TelaCadastroAdmin extends javax.swing.JFrame {
                         .addComponent(lblnome4)
                         .addComponent(Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(55, 55, 55)
-                .addComponent(jButton1)
+                .addComponent(btnCadastrar)
+                .addGap(55, 55, 55)
+                .addComponent(btnVoltar)
                 .addGap(131, 131, 131))
         );
 
@@ -185,9 +203,8 @@ public class TelaCadastroAdmin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        controller.cadastrarAdm();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -201,46 +218,28 @@ public class TelaCadastroAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_NomeActionPerformed
 
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TelaCadastroAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+   public static void main(String[] args) {
+    javax.swing.SwingUtilities.invokeLater(() -> {
+    TelaCadastroAdmin tela = new TelaCadastroAdmin(new AdmDAO());
+    tela.setVisible(true);
+});
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new TelaCadastroAdmin().setVisible(true);
-            }
-        });
-    }
+}
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Email;
     private javax.swing.JTextField Nome;
     private javax.swing.JPasswordField Senha;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -249,4 +248,13 @@ public class TelaCadastroAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel lblnome3;
     private javax.swing.JLabel lblnome4;
     // End of variables declaration//GEN-END:variables
+
+    public javax.swing.JButton  getBtnVoltar() {
+        return btnVoltar;
+    }
+
+    public javax.swing.JButton  getBtnCadastrar() {
+        return btnCadastrar;
+    }
+
 }

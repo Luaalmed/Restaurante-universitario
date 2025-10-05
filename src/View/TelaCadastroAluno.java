@@ -28,6 +28,13 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         
         // --- FIM DO CÓDIGO ADICIONADO ---
     }
+
+    public TelaCadastroAluno(AlunoDAO alunoDAO) {
+         initComponents();
+         this.alunoDAO = alunoDAO;
+         this.controller = new CadastroAlunoController(this, alunoDAO);
+}    
+    
     // Métodos para o Controller "puxar" os dados da tela
    // Getters para o Controller ler os dados da tela
     public String getNome() { return Nome.getText(); }
@@ -73,6 +80,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         Nome = new javax.swing.JTextField();
         Email = new javax.swing.JTextField();
+        btnVoltar = new javax.swing.JButton();
 
         lblnome1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         lblnome1.setForeground(new java.awt.Color(255, 193, 7));
@@ -146,6 +154,16 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
             }
         });
 
+        btnVoltar.setBackground(new java.awt.Color(0, 0, 0));
+        btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(255, 193, 7));
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -170,11 +188,15 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                                     .addComponent(lblnome3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Nome, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
+                            .addComponent(Nome)
                             .addComponent(RA)
                             .addComponent(Email)
                             .addComponent(Senha)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(29, 29, 29)
+                                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addGap(136, 136, 136))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -209,6 +231,8 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                     .addComponent(Senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addComponent(jButton1)
+                .addGap(47, 47, 47)
+                .addComponent(btnVoltar)
                 .addGap(38, 38, 38))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
@@ -264,6 +288,11 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_EmailActionPerformed
 
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -297,6 +326,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
                 new TelaCadastroAluno().setVisible(true);
             }
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -304,6 +334,7 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
     private javax.swing.JTextField Nome;
     private javax.swing.JTextField RA;
     private javax.swing.JPasswordField Senha;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
@@ -318,4 +349,8 @@ public class TelaCadastroAluno extends javax.swing.JFrame {
     private javax.swing.JLabel lblnome3;
     private javax.swing.JLabel lblnome4;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnVoltar() {
+        return btnVoltar;
+    }
 }

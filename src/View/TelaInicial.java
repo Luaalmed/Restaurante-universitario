@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
+import View.TelaLoginAdmin;
 
 /**
  *
@@ -15,8 +16,9 @@ public class TelaInicial extends javax.swing.JFrame {
      */
     public TelaInicial() {
         initComponents();
-    }
-
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+ }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -153,15 +155,17 @@ public class TelaInicial extends javax.swing.JFrame {
 
     private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
         // O nome da variável e o nome da classe devem ser os mesmos
-       TelaLoginAdmin telaAdminLogin = new TelaLoginAdmin(); 
-    telaAdminLogin.setVisible(true);
-    this.dispose(); 
+         this.dispose();
+        new TelaLoginAdmin().setVisible(true);
+
+
     }//GEN-LAST:event_btnAdminActionPerformed
 
     private void jButtonCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastroActionPerformed
-        TelaInicialCadastro telaCadastro = new TelaInicialCadastro();
-    telaCadastro.setVisible(true);
-    this.dispose();
+        this.dispose();
+        TelaInicialCadastro t = new TelaInicialCadastro();
+        new Controller.TelaInicialCadastroController(t); // se existir controller
+        t.setVisible(true);
     }//GEN-LAST:event_jButtonCadastroActionPerformed
 
     /**

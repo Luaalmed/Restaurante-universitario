@@ -3,10 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
+import Controller.PainelAdminController;
 
+import javax.swing.JButton;
 /**
  *
- * @author Caiop
+ * 
  */
 public class PainelAdmin extends javax.swing.JFrame {
 
@@ -15,6 +17,8 @@ public class PainelAdmin extends javax.swing.JFrame {
      */
     public PainelAdmin() {
         initComponents();
+        new Controller.PainelAdminController(this, btnCadastrarCardapio);
+
     }
 
     /**
@@ -28,6 +32,7 @@ public class PainelAdmin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lbldescricao = new javax.swing.JLabel();
+        btnCadastrarCardapio = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -37,21 +42,39 @@ public class PainelAdmin extends javax.swing.JFrame {
         lbldescricao.setForeground(new java.awt.Color(255, 255, 0));
         lbldescricao.setText("Bem-vindo!!");
 
+        btnCadastrarCardapio.setBackground(new java.awt.Color(0, 0, 0));
+        btnCadastrarCardapio.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnCadastrarCardapio.setForeground(new java.awt.Color(255, 255, 255));
+        btnCadastrarCardapio.setText("CADASTRAR CARDAPIO");
+        btnCadastrarCardapio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 193, 0)));
+        btnCadastrarCardapio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCadastrarCardapioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(lbldescricao)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(126, 126, 126)
+                        .addComponent(lbldescricao))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(btnCadastrarCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(lbldescricao)
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addGap(107, 107, 107)
+                .addComponent(btnCadastrarCardapio)
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -67,6 +90,10 @@ public class PainelAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCadastrarCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarCardapioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCadastrarCardapioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,7 +131,12 @@ public class PainelAdmin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCadastrarCardapio;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbldescricao;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnCadastrarCardapio() {
+        return btnCadastrarCardapio;
+    }
 }

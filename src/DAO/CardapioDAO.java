@@ -1,38 +1,35 @@
 package DAO;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import model.Cardapio;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class CardapioDAO {
 
-    private Connection connection;
+    public boolean salvar(Cardapio cardapio) {
+              String sql = "INSERT INTO cardapio (nome, descricao, preco, categoria, disponivel, data_criacao, data_atualizacao) "
+               + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-    public CardapioDAO() {
-        connection = Conexao.getConnection();
+            try (Connection conn = DAO.getConnection();
+                 PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+                stmt.setString(1, cardapio.getNome());
+                stmt.setString(2, cardapio.getDescricao());
+                stmt.setBigDecimal(3, cardapio.getPreco());
+                stmt.setObject(4, cardapio.getCategoria(), java.sql.Types.OTHER);
+                stmt.setBoolean(5, cardapio.isDisponivel());
+                stmt.setTimestamp(6, java.sql.Timestamp.valueOf(java.time.LocalDateTime.now()));
+                stmt.setTimestamp(7, java.sql.Timestamp.valueOf(java.time.LocalDateTime.now()));
+
+                stmt.executeUpdate();
+                return true; // ✅ agora retorna true se deu certo
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false; // ❌ retorna false se deu erro
+            }
     }
-
-    // Salvar 
-    public boolean salvar(Cardapio c) {
-        String sql = "INSERT INTO restaurante_universitario.cardapio (nome, descricao, preco, categoria, disponivel) VALUES (?, ?, ?, ?, ?)";
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            ps.setString(1, c.getNome());
-            ps.setString(2, c.getDescricao());
-            ps.setBigDecimal(3, c.getPreco());
-            ps.setString(4, c.getCategoria());
-            ps.setBoolean(5, c.isDisponivel());
-
-            int r = ps.executeUpdate();
-            return r > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    
-  
-
- 
 }

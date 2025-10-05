@@ -8,6 +8,7 @@ package view;
 import model.Cardapio;
 import DAO.CardapioDAO;
 import java.math.BigDecimal;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,6 +21,8 @@ public class CadastrarCardapio extends javax.swing.JFrame {
 
     public CadastrarCardapio() {
         initComponents();
+        new Controller.CardapioController(this);
+
     }
 
     /**
@@ -49,6 +52,7 @@ public class CadastrarCardapio extends javax.swing.JFrame {
         btnSalvar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         lblCardapio = new javax.swing.JLabel();
+        btnVoltar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -105,7 +109,7 @@ public class CadastrarCardapio extends javax.swing.JFrame {
         lblCategoria.setForeground(new java.awt.Color(255, 193, 7));
         lblCategoria.setText("CATEGORIA: ");
 
-        cbcategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "PRATO", "LANCHE", "BEBIDAS", " " }));
+        cbcategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "prato", "lanche", "bebida" }));
         cbcategoria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbcategoriaActionPerformed(evt);
@@ -132,6 +136,17 @@ public class CadastrarCardapio extends javax.swing.JFrame {
         lblCardapio.setForeground(new java.awt.Color(255, 255, 255));
         lblCardapio.setText("Cadastrar Cardápio");
 
+        btnVoltar.setBackground(new java.awt.Color(0, 0, 0));
+        btnVoltar.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
+        btnVoltar.setText("VOLTAR");
+        btnVoltar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 193, 0)));
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout JfundoLayout = new javax.swing.GroupLayout(Jfundo);
         Jfundo.setLayout(JfundoLayout);
         JfundoLayout.setHorizontalGroup(
@@ -157,7 +172,10 @@ public class CadastrarCardapio extends javax.swing.JFrame {
                                             .addGroup(JfundoLayout.createSequentialGroup()
                                                 .addComponent(lblDisponibilidade)
                                                 .addGap(34, 34, 34)
-                                                .addComponent(chkDisponivel)))
+                                                .addComponent(chkDisponivel))
+                                            .addGroup(JfundoLayout.createSequentialGroup()
+                                                .addGap(163, 163, 163)
+                                                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(0, 0, Short.MAX_VALUE))))
                             .addGroup(JfundoLayout.createSequentialGroup()
                                 .addGap(34, 34, 34)
@@ -174,7 +192,7 @@ public class CadastrarCardapio extends javax.swing.JFrame {
                         .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         JfundoLayout.setVerticalGroup(
             JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +226,9 @@ public class CadastrarCardapio extends javax.swing.JFrame {
                 .addGroup(JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
                     .addComponent(btnCancelar))
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addGap(60, 60, 60)
+                .addComponent(btnVoltar)
+                .addContainerGap(121, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -218,13 +238,13 @@ public class CadastrarCardapio extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(Jfundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(Jfundo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 135, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -237,7 +257,7 @@ public class CadastrarCardapio extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 260, Short.MAX_VALUE))
+                .addGap(0, 136, Short.MAX_VALUE))
         );
 
         pack();
@@ -285,6 +305,10 @@ public class CadastrarCardapio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cbcategoriaActionPerformed
 
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVoltarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -311,6 +335,7 @@ public class CadastrarCardapio extends javax.swing.JFrame {
     private javax.swing.JPanel Jfundo;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JComboBox<String> cbcategoria;
     private javax.swing.JCheckBox chkDisponivel;
     private javax.swing.JDesktopPane jDesktopPane1;
@@ -327,4 +352,36 @@ public class CadastrarCardapio extends javax.swing.JFrame {
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtPreco;
     // End of variables declaration//GEN-END:variables
+
+   public javax.swing.JTextField getTxtNome() {
+    return txtNome;
+}
+
+public javax.swing.JTextArea getTxtDescricao() {
+    return txtDescricao;
+}
+
+public javax.swing.JTextField getTxtPreco() {
+    return txtPreco;
+}
+
+public javax.swing.JComboBox<String> getCbCategoria() {
+    return cbcategoria;
+}
+
+public javax.swing.JCheckBox getChkDisponivel() {
+    return chkDisponivel;
+}
+
+public javax.swing.JButton getBtnSalvar() {
+    return btnSalvar;
+}
+
+public javax.swing.JButton getBtnCancelar() {
+    return btnCancelar;
+}
+
+public javax.swing.JButton getBtnVoltar() {
+    return btnVoltar;
+}
 }

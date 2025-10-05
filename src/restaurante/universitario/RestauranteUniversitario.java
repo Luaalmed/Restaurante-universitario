@@ -5,7 +5,10 @@
 package restaurante.universitario;
 
 import View.TelaInicial; // Importe sua tela
+import View.TelaInicialCadastro;
 import javax.swing.SwingUtilities;
+import Controller.PainelAdminController;    
+import Controller.TelaInicialCadastroController;
 
 public class RestauranteUniversitario {
 
@@ -13,6 +16,10 @@ public class RestauranteUniversitario {
         SwingUtilities.invokeLater(() -> {
             // Apenas cria e mostra a primeira tela. Nada mais.
             new TelaInicial().setVisible(true);
+        
+            TelaInicial tela = new TelaInicial();
+            // Registra o controller aqui, depois de initComponents()
+            tela.setVisible(true);
         });
     }
 }

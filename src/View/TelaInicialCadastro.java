@@ -4,6 +4,8 @@
  */
 package View;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author luana
@@ -15,6 +17,8 @@ public class TelaInicialCadastro extends javax.swing.JFrame {
      */
     public TelaInicialCadastro() {
         initComponents();
+        new Controller.TelaInicialCadastroController(this);
+
         
     }
 
@@ -43,6 +47,7 @@ public class TelaInicialCadastro extends javax.swing.JFrame {
         lblDescricao = new javax.swing.JLabel();
         btnAluno = new javax.swing.JButton();
         btnAdmin = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -122,6 +127,17 @@ public class TelaInicialCadastro extends javax.swing.JFrame {
             }
         });
 
+        btnVoltar.setBackground(new java.awt.Color(0, 0, 0));
+        btnVoltar.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(255, 255, 255));
+        btnVoltar.setText("Voltar");
+        btnVoltar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 193, 7)));
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -137,7 +153,10 @@ public class TelaInicialCadastro extends javax.swing.JFrame {
                             .addComponent(lblDescricao, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(btnAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(74, 74, 74))))))
                 .addContainerGap(92, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -151,7 +170,9 @@ public class TelaInicialCadastro extends javax.swing.JFrame {
                 .addComponent(btnAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addComponent(btnAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addGap(61, 61, 61)
+                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(228, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -180,7 +201,7 @@ public class TelaInicialCadastro extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 27, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -198,12 +219,14 @@ public class TelaInicialCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdminActionPerformed
-    // O nome da variável e o nome da classe devem ser os mesmos
-        TelaCadastroAdmin telaAdmin = new TelaCadastroAdmin(); 
+        this.dispose();
+        View.TelaCadastroAdmin telaAdmin = new View.TelaCadastroAdmin(new DAO.AdmDAO());
         telaAdmin.setVisible(true);
-        this.dispose(); // Fecha a tela atual
-    // Fecha a janela atual (a TelaInicialView)
     }//GEN-LAST:event_btnAdminActionPerformed
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,15 +258,19 @@ public class TelaInicialCadastro extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-           public void run() {
-                new TelaInicialCadastro().setVisible(true);
-            }
-        });
+    public void run() {
+        TelaInicialCadastro view = new TelaInicialCadastro();
+        new Controller.TelaInicialCadastroController(view);
+        view.setVisible(true);
+    }
+});
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdmin;
     private javax.swing.JButton btnAluno;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -259,4 +286,16 @@ public class TelaInicialCadastro extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JLabel lblDescricao;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnAluno() {
+        return btnAluno;
+    }
+
+    public JButton getBtnAdmin() {
+        return btnAdmin;
+    }
+
+    public JButton getBtnVoltar() {
+        return btnVoltar;
+    }
 }

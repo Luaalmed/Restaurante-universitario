@@ -3,6 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
+import controller.LoginAdminController;
+import javax.swing.JButton;
 
 /**
  *
@@ -17,8 +19,8 @@ public class TelaLoginAdmin extends javax.swing.JFrame {
         initComponents();
         
         setLocationRelativeTo(null);
-getRootPane().setDefaultButton(btmlogin);
-new Controller.LoginAdminController(this);
+        getRootPane().setDefaultButton(btmlogin);
+        new LoginAdminController(this);
 
           
     }
@@ -39,6 +41,7 @@ new Controller.LoginAdminController(this);
         txtemail = new javax.swing.JTextField();
         pswdsenha = new javax.swing.JPasswordField();
         btmlogin = new javax.swing.JButton();
+        btnVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,6 +66,16 @@ new Controller.LoginAdminController(this);
         btmlogin.setForeground(new java.awt.Color(255, 255, 0));
         btmlogin.setText("Login");
 
+        btnVoltar.setBackground(new java.awt.Color(102, 102, 102));
+        btnVoltar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnVoltar.setForeground(new java.awt.Color(255, 255, 0));
+        btnVoltar.setText("Voltar");
+        btnVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVoltarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -83,7 +96,10 @@ new Controller.LoginAdminController(this);
                             .addComponent(pswdsenha, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(159, 159, 159)
-                        .addComponent(btmlogin)))
+                        .addComponent(btmlogin))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(159, 159, 159)
+                        .addComponent(btnVoltar)))
                 .addContainerGap(85, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -99,9 +115,11 @@ new Controller.LoginAdminController(this);
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(pswdsenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                 .addComponent(btmlogin)
-                .addGap(40, 40, 40))
+                .addGap(18, 18, 18)
+                .addComponent(btnVoltar)
+                .addGap(29, 29, 29))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -117,6 +135,11 @@ new Controller.LoginAdminController(this);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btnVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,6 +191,7 @@ public void setLoginAction(java.awt.event.ActionListener l) {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btmlogin;
+    private javax.swing.JButton btnVoltar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbldescricao;
@@ -175,4 +199,10 @@ public void setLoginAction(java.awt.event.ActionListener l) {
     private javax.swing.JPasswordField pswdsenha;
     private javax.swing.JTextField txtemail;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnVoltar() {
+        return btnVoltar;
+          }
+
+    
 }
