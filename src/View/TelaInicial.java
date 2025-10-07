@@ -4,6 +4,7 @@
  */
 package View;
 import View.TelaLoginAdmin;
+import javax.swing.JButton;
 
 /**
  *
@@ -212,4 +213,16 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblDescricao;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnAluno() {
+        return btnAluno;
+    }
+
+    public JButton getBtnAdmin() {
+        return btnAdmin;
+    }
+
+    public JButton getJButtonCadastro() {
+        return jButtonCadastro;
+    }
 }

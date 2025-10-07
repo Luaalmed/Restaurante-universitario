@@ -45,7 +45,7 @@ public class PainelAdmin extends javax.swing.JFrame {
         btnCadastrarCardapio.setBackground(new java.awt.Color(0, 0, 0));
         btnCadastrarCardapio.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnCadastrarCardapio.setForeground(new java.awt.Color(255, 255, 255));
-        btnCadastrarCardapio.setText("CADASTRAR CARDAPIO");
+        btnCadastrarCardapio.setText("CADASTRAR  CARDAPIO");
         btnCadastrarCardapio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 193, 0)));
         btnCadastrarCardapio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +128,8 @@ public class PainelAdmin extends javax.swing.JFrame {
                 new PainelAdmin().setVisible(true);
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -49,6 +49,9 @@ public class LoginAdminController {
 
     // ✅ Método Voltar
     public void voltar() {
+        for (java.awt.Window window : java.awt.Window.getWindows()) {
+        window.dispose(); // fecha todas as janelas abertas
+        }
         SwingUtilities.invokeLater(() -> {
             new TelaInicial().setVisible(true); // Abra a tela principal
             view.dispose(); // Fecha a tela de login

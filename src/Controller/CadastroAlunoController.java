@@ -17,8 +17,10 @@ public class CadastroAlunoController {
     }
 
     private void registrarEventos() {
+        for (java.awt.Window window : java.awt.Window.getWindows()) {
+        window.dispose(); // fecha todas as janelas abertas
+        }
         view.getBtnVoltar().addActionListener(e -> {
-        view.dispose(); // fecha a tela atual
         new View.TelaInicialCadastro().setVisible(true); // volta pra tela inicial de cadastro
     });
     }

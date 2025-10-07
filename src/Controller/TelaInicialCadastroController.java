@@ -22,18 +22,24 @@ public class TelaInicialCadastroController {
         System.out.println("getBtnVoltar() = " + view.getBtnVoltar());
 
         view.getBtnAluno().addActionListener(e -> {
-            view.dispose();
+               for (java.awt.Window window : java.awt.Window.getWindows()) {
+        window.dispose(); // fecha todas as janelas abertas
+        }
             new TelaCadastroAluno(new AlunoDAO()).setVisible(true);
         });
 
         view.getBtnAdmin().addActionListener(e -> {
-            view.dispose();
+               for (java.awt.Window window : java.awt.Window.getWindows()) {
+        window.dispose(); // fecha todas as janelas abertas
+        }
             new TelaCadastroAdmin(new AdmDAO()).setVisible(true);
         });
 
         view.getBtnVoltar().addActionListener(e -> {
-            System.out.println("Voltar clicado");
-            view.dispose();
+          
+               for (java.awt.Window window : java.awt.Window.getWindows()) {
+        window.dispose(); // fecha todas as janelas abertas
+        }
             new TelaInicial().setVisible(true);
         });
     }

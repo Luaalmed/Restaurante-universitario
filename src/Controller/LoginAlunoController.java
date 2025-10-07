@@ -34,8 +34,10 @@ public class LoginAlunoController {
             if (ok) {
                 SwingUtilities.invokeLater(() -> {
                     new PainelAluno().setVisible(true);
-                    view.dispose();
                 });
+           for (java.awt.Window window : java.awt.Window.getWindows()) {
+        window.dispose(); // fecha todas as janelas abertas
+        }
             } else {
                 JOptionPane.showMessageDialog(view,
                         "Aluno não encontrado.",

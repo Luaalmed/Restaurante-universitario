@@ -4,22 +4,16 @@
  */
 package restaurante.universitario;
 
-import View.TelaInicial; // Importe sua tela
-import View.TelaInicialCadastro;
 import javax.swing.SwingUtilities;
-import Controller.PainelAdminController;    
-import Controller.TelaInicialCadastroController;
+import View.TelaInicial;
+import controller.TelaInicialController;
 
 public class RestauranteUniversitario {
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            // Apenas cria e mostra a primeira tela. Nada mais.
-            new TelaInicial().setVisible(true);
-        
-            TelaInicial tela = new TelaInicial();
-            // Registra o controller aqui, depois de initComponents()
-            tela.setVisible(true);
+            TelaInicial tela = new TelaInicial();           // cria uma única instância
+            TelaInicialController controller = new TelaInicialController(tela); // conecta o controller
+            tela.setVisible(true);                          // mostra essa tela
         });
     }
 }

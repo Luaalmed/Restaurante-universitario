@@ -60,7 +60,9 @@ public class CadastroAdmController {
             JOptionPane.showMessageDialog(view,
                 "ADM cadastrado com sucesso!",
                 "Sucesso", JOptionPane.INFORMATION_MESSAGE);
-            view.dispose();
+               for (java.awt.Window window : java.awt.Window.getWindows()) {
+        window.dispose(); // fecha todas as janelas abertas
+        }
             new TelaInicial().setVisible(true);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(view,
@@ -71,7 +73,9 @@ public class CadastroAdmController {
     }
 
     private void voltarParaInicial() {
-        view.dispose();
+        for (java.awt.Window window : java.awt.Window.getWindows()) {
+        window.dispose(); // fecha todas as janelas abertas
+        }
         new TelaInicialCadastro().setVisible(true);
     }
 }
