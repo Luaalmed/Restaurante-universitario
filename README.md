@@ -84,6 +84,67 @@ Nosso sistema abrange uma ampla gama de funcionalidades, divididas entre a exper
 
 ---
 
-### **Como Contribuir**
+## 🚀 Guia de Execução Local do Projeto
 
-*(Aqui você pode adicionar informações sobre como outros desenvolvedores podem contribuir, como instalar o projeto localmente, etc.)*
+Este guia detalha os passos necessários para configurar e rodar o projeto **Restaurante Universitário** em sua máquina para fins de avaliação ou desenvolvimento local.
+
+### **1. Pré-Requisitos (O que você precisa ter)**
+
+Certifique-se de que os seguintes aplicativos e ferramentas estão instalados em sua máquina:
+
+| Software | Função | Onde Obter |
+| :--- | :--- | :--- |
+| **NetBeans IDE** | Ambiente de Desenvolvimento Java. | *https://netbeans.apache.org/front/main/index.html* |
+| **Java Development Kit (JDK)** | Versão necessária para rodar o código (Recomendado JDK 17+). | *https://www.oracle.com/br/java/technologies/downloads/* |
+| **PostgreSQL** | Servidor de Banco de Dados. | *https://www.postgresql.org/download/* |
+
+---
+
+### **2. Configuração do Banco de Dados (PostgreSQL)**
+
+O primeiro passo é preparar o ambiente de dados para o sistema.
+
+1.  **Criação do Banco de Dados:**
+    * Abra o seu cliente PostgreSQL (pgAdmin ou similar).
+    * Crie um novo banco de dados com o nome exato: **`restaurante_universitario`**.
+
+2.  **Criação das Estruturas:**
+    * Localize o arquivo de script SQL do projeto (ex: `restaurante_universitario.sql`).
+    * Execute o conteúdo completo deste arquivo no banco de dados `restaurante_universitario`. Este script irá criar todas as tabelas, schemas e tipos de dados necessários.
+
+---
+
+### **3. Configuração do Projeto no NetBeans**
+
+Agora, vamos abrir o código e garantir a comunicação com o banco de dados.
+
+1.  **Abrir o Projeto:**
+    * **Se baixado via ZIP:** Descompacte o arquivo. No NetBeans, vá em **`File`** $\rightarrow$ **`Open Project...`** e selecione a pasta raiz.
+    * **Se clonado via Git:** No NetBeans, vá em **`File`** $\rightarrow$ **`Open Project...`** e selecione a pasta clonada.
+
+2.  **Adicionar o Driver do PostgreSQL (JDBC):**
+    * **Obrigatório:** O projeto precisa do conector Java-PostgreSQL.
+    * No painel **`Projects`**, clique com o botão direito em **`Libraries`**.
+    * Selecione **`Add JAR/Folder...`** e adicione o arquivo `.jar` do driver JDBC do PostgreSQL (ex: `postgresql-42.x.x.jar`).
+
+3.  **Ajustar as Credenciais de Conexão:**
+    * Localize e abra o arquivo **`Conexao.java`** (geralmente em `src/DAO/`).
+    * Edite as constantes `USER` e `PASS` para corresponderem ao seu usuário e senha do PostgreSQL:
+
+    ```java
+    // Certifique-se de que a porta (5433) e o nome do BD estão corretos!
+    private static final String URL = "jdbc:postgresql://localhost:5433/restaurante_universitario";
+    private static final String USER = "seu_usuario_postgres"; // EX: "postgres"
+    private static final String PASS = "sua_senha_do_postgres"; // Sua senha local
+    ```
+
+---
+
+### **4. Execução do Aplicativo**
+
+Com o banco de dados e o código configurados, o projeto está pronto para ser executado.
+
+1.  No NetBeans, localize o arquivo principal do projeto: **`RestauranteUniversitario.java`** (dentro do seu pacote principal).
+2.  Clique com o botão direito sobre ele e selecione **`Run File`**.
+
+A aplicação da tela inicial deverá ser carregada.
