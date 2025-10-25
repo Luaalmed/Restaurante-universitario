@@ -78,7 +78,9 @@ Nosso sistema abrange uma ampla gama de funcionalidades, divididas entre a exper
 ### **Tecnologias Utilizadas**
 
 * **Banco de Dados:** PostgreSQL
-* **Java e Jframe**
+* **Backend: Java**
+* **Front-end: Jframe**
+*  e Jframe**
 
 ---
 
