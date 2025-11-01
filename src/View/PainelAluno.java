@@ -4,9 +4,11 @@
  */
 package View;
 
+import View.FazerPedido;
+
 /**
  *
- * @author Caiop
+ * @author 
  */
 public class PainelAluno extends javax.swing.JFrame {
 
@@ -26,16 +28,31 @@ public class PainelAluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         lbldescricao = new javax.swing.JLabel();
+        btnFazerPedido = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
         lbldescricao.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lbldescricao.setForeground(new java.awt.Color(255, 255, 0));
+        lbldescricao.setForeground(new java.awt.Color(255, 193, 7));
         lbldescricao.setText("Bem-vindo!");
+
+        btnFazerPedido.setBackground(new java.awt.Color(0, 0, 0));
+        btnFazerPedido.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnFazerPedido.setForeground(new java.awt.Color(255, 193, 7));
+        btnFazerPedido.setText("Fazer Pedido");
+        btnFazerPedido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 193, 7)));
+        btnFazerPedido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFazerPedidoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -43,7 +60,9 @@ public class PainelAluno extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(128, 128, 128)
-                .addComponent(lbldescricao)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbldescricao)
+                    .addComponent(btnFazerPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(139, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -51,7 +70,9 @@ public class PainelAluno extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(lbldescricao)
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addComponent(btnFazerPedido)
+                .addContainerGap(164, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -67,6 +88,16 @@ public class PainelAluno extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnFazerPedidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFazerPedidoActionPerformed
+       FazerPedido telaPedido = new FazerPedido();
+    
+    // 2. Torna a nova tela visível
+    telaPedido.setVisible(true);
+    
+    // 3. Fecha a janela atual (o Painel do Aluno)
+    this.dispose();
+    }//GEN-LAST:event_btnFazerPedidoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,6 +135,8 @@ public class PainelAluno extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnFazerPedido;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbldescricao;
     // End of variables declaration//GEN-END:variables

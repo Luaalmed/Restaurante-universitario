@@ -1,16 +1,18 @@
 package Controller;
 
-import DAO.AlunoDAO;                    
-import View.PainelAluno;               // <-- IMPORTA A VIEW DO PAINEL
-import View.TelaLoginAluno;            // <-- IMPORTA A VIEW DO LOGIN
-import java.sql.SQLException;          // <-- EXCEÇÕES DO JDBC
-import javax.swing.JOptionPane;        // <-- DIALOGS
-import javax.swing.SwingUtilities;     // <-- ABRIR A OUTRA TELA
+import DAO.AlunoDAO;
+import View.PainelAluno;
+import View.TelaLoginAluno;
+import Model.SessaoUsuario;
+import Model.UsuarioInfo;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
 
 public class LoginAlunoController {
 
     private final TelaLoginAluno view;
-    private final AlunoDAO alunoDAO = new AlunoDAO();   // <-- FIELD DO DAO
+    private final AlunoDAO alunoDAO = new AlunoDAO();
 
     public LoginAlunoController(TelaLoginAluno view) {
         this.view = view;
@@ -19,8 +21,8 @@ public class LoginAlunoController {
     }
 
     private void onLogin() {
-        String ra    = view.getRa();       // <- pega da view
-        String senha = view.getSenha();    // <- pega da view (tudo minúsculo)
+        String ra    = view.getRa();
+        String senha = view.getSenha();
 
         if (ra.isBlank() || senha.isBlank()) {
             JOptionPane.showMessageDialog(view,
@@ -30,17 +32,32 @@ public class LoginAlunoController {
         }
 
         try {
-            boolean ok = alunoDAO.autenticarAluno(ra, senha);  // <- senha minúsculo
-            if (ok) {
+            // 1. CHAMA O NOVO MÉTODO DO DAO QUE RETORNA O OBJETO UsuarioInfo
+            UsuarioInfo usuarioInfo = alunoDAO.autenticarAluno(ra, senha);
+            
+            if (usuarioInfo != null) {
+                
+                // 2. INICIA A SESSÃO: Armazena o ID e o Tipo de Usuário (cliente)
+                SessaoUsuario.getInstance().iniciarSessao(
+                    usuarioInfo.getId(), 
+                    usuarioInfo.getTipoUsuario()
+                );
+                
+                JOptionPane.showMessageDialog(view, "Login realizado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+
+                // 3. ABRE A NOVA TELA E FECHA AS ANTIGAS
                 SwingUtilities.invokeLater(() -> {
                     new PainelAluno().setVisible(true);
                 });
-           for (java.awt.Window window : java.awt.Window.getWindows()) {
-        window.dispose(); // fecha todas as janelas abertas
-        }
+                
+                // Fecha todas as janelas abertas
+                for (java.awt.Window window : java.awt.Window.getWindows()) {
+                    window.dispose();
+                }
+            
             } else {
                 JOptionPane.showMessageDialog(view,
-                        "Aluno não encontrado.",
+                        "RA ou Senha inválidos.",
                         "Login", JOptionPane.WARNING_MESSAGE);
             }
         } catch (SQLException ex) {
