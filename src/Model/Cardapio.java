@@ -12,22 +12,22 @@ public class Cardapio {
     private String nome;
     private String descricao;
     private BigDecimal preco;
-    private String categoria; 
-    private boolean disponivel;
+    private String categoria;
     private LocalDateTime dataCriacao;
     private LocalDateTime dataAtualizacao;
+    private int quantidadeEstoque;
 
-    public Cardapio() {
-    }
+    public Cardapio() {}
 
-    public Cardapio(String nome, String descricao, BigDecimal preco, String categoria, boolean disponivel) {
+    public Cardapio(int id, String nome, String categoria, BigDecimal preco, int quantidadeEstoque) {
+        this.id = id;
         this.nome = nome;
-        this.descricao = descricao;
-        this.preco = preco;
         this.categoria = categoria;
-        this.disponivel = disponivel;
+        this.preco = preco;
+        this.quantidadeEstoque = quantidadeEstoque;
     }
 
+    // Getters e Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
@@ -43,13 +43,12 @@ public class Cardapio {
     public String getCategoria() { return categoria; }
     public void setCategoria(String categoria) { this.categoria = categoria; }
 
-    public boolean isDisponivel() { return disponivel; }
-    public void setDisponivel(boolean disponivel) { this.disponivel = disponivel; }
-
     public LocalDateTime getDataCriacao() { return dataCriacao; }
     public void setDataCriacao(LocalDateTime dataCriacao) { this.dataCriacao = dataCriacao; }
 
     public LocalDateTime getDataAtualizacao() { return dataAtualizacao; }
     public void setDataAtualizacao(LocalDateTime dataAtualizacao) { this.dataAtualizacao = dataAtualizacao; }
-}
 
+    public int getQuantidadeEstoque() { return quantidadeEstoque; }
+    public void setQuantidadeEstoque(int quantidadeEstoque) { this.quantidadeEstoque = quantidadeEstoque; }
+}

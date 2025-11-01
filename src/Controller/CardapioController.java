@@ -1,10 +1,10 @@
-// CardapioController.java
 package Controller;
 
 import DAO.CardapioDAO;
 import view.CadastrarCardapio;
 import model.Cardapio;
 import javax.swing.JOptionPane;
+import java.math.BigDecimal;
 
 public class CardapioController {
 
@@ -29,7 +29,8 @@ public class CardapioController {
             String descricao  = tela.getTxtDescricao().getText().trim();
             String precoText  = tela.getTxtPreco().getText().trim();
             String categoria  = (String) tela.getCbCategoria().getSelectedItem();
-            boolean disponivel= tela.getChkDisponivel().isSelected();
+            String qtdText    = tela.getTxtQuantidade().getText().trim();
+            int quantidade    = qtdText.isEmpty() ? 0 : Integer.parseInt(qtdText);
 
             if (nome.isEmpty() || precoText.isEmpty()) {
                 JOptionPane.showMessageDialog(tela, "Nome e Preço são obrigatórios!", "Erro", JOptionPane.ERROR_MESSAGE);
@@ -39,9 +40,9 @@ public class CardapioController {
             Cardapio c = new Cardapio();
             c.setNome(nome);
             c.setDescricao(descricao);
-            c.setPreco(new java.math.BigDecimal(precoText));
+            c.setPreco(new BigDecimal(precoText));
             c.setCategoria(categoria);
-            c.setDisponivel(disponivel);
+            c.setQuantidadeEstoque(quantidade);
 
             boolean ok = dao.salvar(c);
             JOptionPane.showMessageDialog(
@@ -53,7 +54,7 @@ public class CardapioController {
             if (ok) voltar();
 
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(tela, "Preço inválido!", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(tela, "Preço ou quantidade inválida!", "Erro", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -64,7 +65,7 @@ public class CardapioController {
             tela.getTxtDescricao().setText("");
             tela.getTxtPreco().setText("");
             tela.getCbCategoria().setSelectedIndex(0);
-            tela.getChkDisponivel().setSelected(false);
+            tela.getTxtQuantidade().setText("");
         }
     }
 

@@ -33,6 +33,7 @@ public class PainelAdmin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lbldescricao = new javax.swing.JLabel();
         btnCadastrarCardapio = new javax.swing.JButton();
+        btnNaTelainicialADMEstoque = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -53,28 +54,43 @@ public class PainelAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnNaTelainicialADMEstoque.setBackground(new java.awt.Color(0, 0, 0));
+        btnNaTelainicialADMEstoque.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnNaTelainicialADMEstoque.setForeground(new java.awt.Color(255, 255, 255));
+        btnNaTelainicialADMEstoque.setText("ESTOQUE");
+        btnNaTelainicialADMEstoque.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 193, 0)));
+        btnNaTelainicialADMEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNaTelainicialADMEstoqueActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(lbldescricao))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(btnCadastrarCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnNaTelainicialADMEstoque, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(126, 126, 126)
+                            .addComponent(lbldescricao))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(109, 109, 109)
+                            .addComponent(btnCadastrarCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(lbldescricao)
-                .addGap(107, 107, 107)
+                .addGap(82, 82, 82)
+                .addComponent(btnNaTelainicialADMEstoque)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                 .addComponent(btnCadastrarCardapio)
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addGap(108, 108, 108))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -94,6 +110,14 @@ public class PainelAdmin extends javax.swing.JFrame {
     private void btnCadastrarCardapioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarCardapioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCadastrarCardapioActionPerformed
+
+    private void btnNaTelainicialADMEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNaTelainicialADMEstoqueActionPerformed
+        // TODO add your handling code here:
+        TelaEstoque tela = new TelaEstoque();
+        tela.setVisible(true);
+        
+
+    }//GEN-LAST:event_btnNaTelainicialADMEstoqueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,6 +158,7 @@ public class PainelAdmin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarCardapio;
+    private javax.swing.JButton btnNaTelainicialADMEstoque;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbldescricao;
     // End of variables declaration//GEN-END:variables

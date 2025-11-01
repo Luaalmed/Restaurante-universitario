@@ -1,20 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
-
 package view;
-import model.Cardapio;
+
 import DAO.CardapioDAO;
 import java.math.BigDecimal;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import model.Cardapio;
 
-/**
- *
- * @author Bomfi
- */
 public class CadastrarCardapio extends javax.swing.JFrame {
 
     private CardapioDAO cardapioDAO = new CardapioDAO();
@@ -22,9 +12,7 @@ public class CadastrarCardapio extends javax.swing.JFrame {
     public CadastrarCardapio() {
         initComponents();
         new Controller.CardapioController(this);
-
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,11 +36,11 @@ public class CadastrarCardapio extends javax.swing.JFrame {
         lblCategoria = new javax.swing.JLabel();
         cbcategoria = new javax.swing.JComboBox<>();
         lblDisponibilidade = new javax.swing.JLabel();
-        chkDisponivel = new javax.swing.JCheckBox();
         btnSalvar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
         lblCardapio = new javax.swing.JLabel();
         btnVoltar = new javax.swing.JButton();
+        txtQuantidade1 = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -118,7 +106,7 @@ public class CadastrarCardapio extends javax.swing.JFrame {
 
         lblDisponibilidade.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblDisponibilidade.setForeground(new java.awt.Color(255, 193, 7));
-        lblDisponibilidade.setText("DISPONIBILIDADE:");
+        lblDisponibilidade.setText("ESTOQUE:");
 
         btnSalvar.setBackground(new java.awt.Color(0, 0, 0));
         btnSalvar.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
@@ -171,8 +159,8 @@ public class CadastrarCardapio extends javax.swing.JFrame {
                                                 .addComponent(cbcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(JfundoLayout.createSequentialGroup()
                                                 .addComponent(lblDisponibilidade)
-                                                .addGap(34, 34, 34)
-                                                .addComponent(chkDisponivel))
+                                                .addGap(18, 18, 18)
+                                                .addComponent(txtQuantidade1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(JfundoLayout.createSequentialGroup()
                                                 .addGap(163, 163, 163)
                                                 .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -218,10 +206,10 @@ public class CadastrarCardapio extends javax.swing.JFrame {
                 .addGroup(JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblCategoria)
                     .addComponent(cbcategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addGroup(JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGap(41, 41, 41)
+                .addGroup(JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblDisponibilidade)
-                    .addComponent(chkDisponivel))
+                    .addComponent(txtQuantidade1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addGroup(JfundoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
@@ -268,14 +256,12 @@ public class CadastrarCardapio extends javax.swing.JFrame {
             String descricao = txtDescricao.getText();
             BigDecimal preco = new BigDecimal(txtPreco.getText());
             String categoria = cbcategoria.getSelectedItem().toString();
-            boolean disponivel = chkDisponivel.isSelected();
 
             Cardapio c = new Cardapio();
             c.setNome(nome);
             c.setDescricao(descricao);
             c.setPreco(preco);
             c.setCategoria(categoria);
-            c.setDisponivel(disponivel);
 
             boolean sucesso = cardapioDAO.salvar(c);
 
@@ -295,7 +281,6 @@ public class CadastrarCardapio extends javax.swing.JFrame {
         txtDescricao.setText("");
         txtPreco.setText("");
         cbcategoria.setSelectedIndex(0);
-        chkDisponivel.setSelected(false);
     }
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
@@ -337,7 +322,6 @@ public class CadastrarCardapio extends javax.swing.JFrame {
     private javax.swing.JButton btnSalvar;
     private javax.swing.JButton btnVoltar;
     private javax.swing.JComboBox<String> cbcategoria;
-    private javax.swing.JCheckBox chkDisponivel;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -351,6 +335,7 @@ public class CadastrarCardapio extends javax.swing.JFrame {
     private javax.swing.JTextArea txtDescricao;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtPreco;
+    private javax.swing.JTextField txtQuantidade1;
     // End of variables declaration//GEN-END:variables
 
    public javax.swing.JTextField getTxtNome() {
@@ -369,9 +354,6 @@ public javax.swing.JComboBox<String> getCbCategoria() {
     return cbcategoria;
 }
 
-public javax.swing.JCheckBox getChkDisponivel() {
-    return chkDisponivel;
-}
 
 public javax.swing.JButton getBtnSalvar() {
     return btnSalvar;
@@ -384,4 +366,14 @@ public javax.swing.JButton getBtnCancelar() {
 public javax.swing.JButton getBtnVoltar() {
     return btnVoltar;
 }
+
+
+
+public javax.swing.JTextField getTxtQuantidade() {
+    return txtQuantidade1;
+}
+
+ 
+
+
 }

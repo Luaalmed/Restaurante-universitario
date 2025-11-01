@@ -11,9 +11,9 @@ import controller.TelaInicialController;
 public class RestauranteUniversitario {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            TelaInicial tela = new TelaInicial();           // cria uma única instância
-            TelaInicialController controller = new TelaInicialController(tela); // conecta o controller
-            tela.setVisible(true);                          // mostra essa tela
+            TelaInicial tela = new TelaInicial();           
+            TelaInicialController controller = new TelaInicialController(tela);
+            tela.setVisible(true);                         
         });
     }
 }
