@@ -24,7 +24,7 @@ public class AdmDAO {
         "AND tipo_usuario = 'admin'::" + ENUM + " LIMIT 1";
 
     public void inserir(CadastroAdmModel m) throws SQLException {
-        try (Connection con = DAO.getConnection();
+        try (Connection con = Conexao.getConnection();
              PreparedStatement ps = con.prepareStatement(INSERT_SQL)) {
 
             ps.setString(1, m.getNome());
@@ -40,7 +40,7 @@ public class AdmDAO {
     }
 
     public boolean emailOuIdJaExiste(String email, String id) throws SQLException {
-        try (Connection con = DAO.getConnection();
+        try (Connection con = Conexao.getConnection();
              PreparedStatement ps = con.prepareStatement(EXISTS_SQL)) {
 
             ps.setString(1, email);
@@ -52,7 +52,7 @@ public class AdmDAO {
     }
 
     public boolean emailJaExiste(String email) throws SQLException {
-        try (Connection con = DAO.getConnection();
+        try (Connection con = Conexao.getConnection();
              PreparedStatement ps = con.prepareStatement(
                  "SELECT 1 FROM " + SCHEMA + ".usuarios WHERE email = ? LIMIT 1")) {
 
@@ -64,7 +64,7 @@ public class AdmDAO {
     }
 
     public boolean autenticarAdmin(String email, String senha) throws SQLException {
-        try (Connection con = DAO.getConnection();
+        try (Connection con = Conexao.getConnection();
              PreparedStatement ps = con.prepareStatement(AUTH_SQL)) {
 
             ps.setString(1, email);
