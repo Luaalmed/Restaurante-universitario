@@ -55,7 +55,7 @@ Nosso sistema abrange uma ampla gama de funcionalidades, divididas entre a exper
 * **Banco de Dados:** PostgreSQL
 * **Backend: Java**
 * **Front-end: Jframe**
-*  e Jframe**
+
 
 ---
 
