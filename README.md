@@ -1,4 +1,4 @@
-# 🥗 Restaurante Universitário - (Nome)
+# 🥗 Restaurante Universitário 
 
 ## 🚀 Sobre o Projeto
 
