@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class DAO {
     private static final String URL = "jdbc:postgresql://localhost:5432/postgres";
     private static final String USER = "postgres";
-    private static final String PASS = "1234"; 
+    private static final String PASS = "fei"; 
     static {
         try {
             Class.forName("org.postgresql.Driver");

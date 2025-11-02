@@ -34,6 +34,7 @@ public class PainelAdmin extends javax.swing.JFrame {
         lbldescricao = new javax.swing.JLabel();
         btnCadastrarCardapio = new javax.swing.JButton();
         btnNaTelainicialADMEstoque = new javax.swing.JButton();
+        btnPedidioAdm = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +66,17 @@ public class PainelAdmin extends javax.swing.JFrame {
             }
         });
 
+        btnPedidioAdm.setBackground(new java.awt.Color(0, 0, 0));
+        btnPedidioAdm.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        btnPedidioAdm.setForeground(new java.awt.Color(255, 255, 255));
+        btnPedidioAdm.setText("PEDIDO");
+        btnPedidioAdm.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 193, 0)));
+        btnPedidioAdm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPedidioAdmActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -78,7 +90,9 @@ public class PainelAdmin extends javax.swing.JFrame {
                             .addComponent(lbldescricao))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(109, 109, 109)
-                            .addComponent(btnCadastrarCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnPedidioAdm, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnCadastrarCardapio, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(139, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -88,7 +102,9 @@ public class PainelAdmin extends javax.swing.JFrame {
                 .addComponent(lbldescricao)
                 .addGap(82, 82, 82)
                 .addComponent(btnNaTelainicialADMEstoque)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(btnPedidioAdm)
+                .addGap(37, 37, 37)
                 .addComponent(btnCadastrarCardapio)
                 .addGap(108, 108, 108))
         );
@@ -118,6 +134,14 @@ public class PainelAdmin extends javax.swing.JFrame {
         
 
     }//GEN-LAST:event_btnNaTelainicialADMEstoqueActionPerformed
+
+    private void btnPedidioAdmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPedidioAdmActionPerformed
+        // TODO add your handling code here:
+        
+        new View.TelaPedidoAdm().setVisible(true);
+        this.dispose();
+   
+    }//GEN-LAST:event_btnPedidioAdmActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +183,7 @@ public class PainelAdmin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrarCardapio;
     private javax.swing.JButton btnNaTelainicialADMEstoque;
+    private javax.swing.JButton btnPedidioAdm;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lbldescricao;
     // End of variables declaration//GEN-END:variables

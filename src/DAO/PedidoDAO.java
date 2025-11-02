@@ -4,7 +4,10 @@ import model.Pedido;
 import model.ItemPedido;
 import java.sql.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import model.Cardapio;
 
 public class PedidoDAO {
     private static final String SCHEMA = "restaurante_universitario";
@@ -87,6 +90,134 @@ private int salvarPedidoHeader(Connection con, Pedido pedido) throws SQLExceptio
             ps.setBigDecimal(4, item.getPrecoUnitario());
             
             return ps.executeUpdate() > 0;
+        }
+    }
+     // Buscar dados para a tabela
+    public List<Object[]> buscarPedidosParaTabelaADM() {
+        List<Object[]> resultados = new ArrayList<>();
+        
+        // Mostrar TODOS os pedidos, incluindo cancelados e entregues
+        String sql = "SELECT p.id, p.status, p.total, p.forma_pagamento " +
+                    "FROM " + SCHEMA + ".pedidos p " +
+                    "ORDER BY p.data_pedido DESC";
+
+        try (Connection con = Conexao.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            
+            while (rs.next()) {
+                Object[] linha = {
+                    rs.getInt("id"),
+                    formatarStatus(rs.getString("status")),
+                    "R$ " + String.format("%.2f", rs.getDouble("total")),
+                    formatarPagamento(rs.getString("forma_pagamento"))
+                };
+                resultados.add(linha);
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("ERRO SQL: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao carregar pedidos: " + e.getMessage());
+        }
+        
+        return resultados;
+    }
+
+    // Cancelar pedido
+    public boolean cancelarPedido(int idPedido) {
+        // Usando CAST para converter string para ENUM
+         String sql = "UPDATE " + SCHEMA + ".pedidos SET status = ?::restaurante_universitario.status_pedido_enum WHERE id = ?";
+        
+        try (Connection con = Conexao.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            
+            ps.setString(1, "cancelado");
+            ps.setInt(2, idPedido);
+            
+            int affectedRows = ps.executeUpdate();
+            System.out.println("Pedido " + idPedido + " CANCELADO. Linhas afetadas: " + affectedRows);
+            
+            if (affectedRows > 0) {
+                // Verificar se realmente foi cancelado
+                String verifySql = "SELECT status FROM " + SCHEMA + ".pedidos WHERE id = ?";
+                try (PreparedStatement verifyPs = con.prepareStatement(verifySql)) {
+                    verifyPs.setInt(1, idPedido);
+                    ResultSet rs = verifyPs.executeQuery();
+                    if (rs.next()) {
+                        String novoStatus = rs.getString("status");
+                        System.out.println("Status atual do pedido " + idPedido + ": " + novoStatus);
+                    }
+                }
+            }
+            
+            return affectedRows > 0;
+            
+        } catch (SQLException e) {
+            System.out.println("ERRO ao cancelar pedido " + idPedido + ": " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+ 
+
+    // Marcar pedido como concluído 
+     public boolean marcarComoConcluido(int idPedido) {
+        String sql = "UPDATE " + SCHEMA + ".pedidos SET status = ?::restaurante_universitario.status_pedido_enum WHERE id = ?";
+        
+        try (Connection con = Conexao.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            
+            ps.setString(1, "entregue");
+            ps.setInt(2, idPedido);
+            
+            int affectedRows = ps.executeUpdate();
+            System.out.println("Pedido " + idPedido + " CONCLUÍDO. Linhas afetadas: " + affectedRows);
+            
+            if (affectedRows > 0) {
+                // Verificar se realmente foi entregue
+                String verifySql = "SELECT status FROM " + SCHEMA + ".pedidos WHERE id = ?";
+                try (PreparedStatement verifyPs = con.prepareStatement(verifySql)) {
+                    verifyPs.setInt(1, idPedido);
+                    ResultSet rs = verifyPs.executeQuery();
+                    if (rs.next()) {
+                        String novoStatus = rs.getString("status");
+                        System.out.println("Status atual do pedido " + idPedido + ": " + novoStatus);
+                    }
+                }
+            }
+            
+            return affectedRows > 0;
+            
+        } catch (SQLException e) {
+            System.out.println("ERRO ao concluir pedido " + idPedido + ": " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    // Métodos auxiliares para formatar
+    private String formatarStatus(String status) {
+        if (status == null) return "Desconhecido";
+        
+        switch (status) {
+            case "pendente": return "Pendente";
+            case "em_preparacao": return "Em Preparação";
+            case "pronto": return "Pronto";
+            case "entregue": return "Entregue";
+            case "cancelado": return "Cancelado";
+            default: return status;
+        }
+    }
+
+    private String formatarPagamento(String pagamento) {
+        if (pagamento == null) return "Desconhecido";
+        
+        switch (pagamento) {
+            case "cartao": return "Cartão";
+            case "dinheiro": return "Dinheiro";
+            case "pix": return "PIX";
+            default: return pagamento;
         }
     }
 }
