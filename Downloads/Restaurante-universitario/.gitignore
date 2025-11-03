@@ -1,0 +1,15 @@
+<<<<<<< HEAD
+/nbproject/private/
+=======
+# Pastas de compilação do NetBeans
+/build/
+/dist/
+
+# Arquivos de configuração do usuário do NetBeans
+/nbproject/private/
+/nbbuild/
+/nbdist/
+
+# Outros
+.nb-gradle/
+>>>>>>> 476cf2fc9d1d31dcf2d36f487f428c30d64b455a
