@@ -1,0 +1,11 @@
+# Pastas de compilação do NetBeans
+/build/
+/dist/
+
+# Arquivos de configuração do usuário do NetBeans
+/nbproject/private/
+/nbbuild/
+/nbdist/
+
+# Outros
+.nb-gradle/
